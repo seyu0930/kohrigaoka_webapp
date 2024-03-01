@@ -1,0 +1,20 @@
+{% extends "index.html" %}
+
+{% block pagename %} {% if ourposts_list.0.category %}{{ ourposts_list.0.get_category_display }}{% else %}Coming Soon!{% endif %}{% endblock %}
+{% block main %}
+<!-- Blog entries-->
+    <!-- Nested row for non-featured blog posts-->
+    <div class="row">
+     {% if ourposts_list %}
+        {% for ourposts in ourposts_list %}
+        {% include "ourposts_include.html" %}
+        {% endfor %}
+    {% else %}
+        <p>まだ投稿がありません</p>
+    {% endif %}
+    </div>
+{% endblock %}
+
+{% block pagenation %}
+    {% include "pagenation_include.html" %}
+{% endblock %}

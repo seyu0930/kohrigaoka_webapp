@@ -1,0 +1,40 @@
+{% extends "accounts_index.html" %}
+
+{% block pagename %}サインアップ{% endblock %}
+{% block main %}
+<!-- Blog entries-->
+    <!-- Nested row for non-featured blog posts-->
+    <div class="row">
+        <form method="POST">
+            <div class="text-center me-5">
+            {% csrf_token %}
+            {% for fields in form %}
+                <div class = 'userinfo'>
+                    <div class = 'info'>
+                        <span>必須</span>
+                            {{ fields.label_tag }}
+                            <br>
+                            <p>
+                            {{ fields }}
+                            </p>
+
+                            <div class = 'help_text'>
+                            {% if fields.help_text %}
+                                <small'>{{ fields.help_text }}</small>
+                            {% endif %}
+                            </div>
+                    </div>
+                    {% for error in fields.errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                    </p>
+                </div>
+        {% endfor %}
+            </div>
+            <div class="text-center ms-5">
+                <button type="button" class="btn btn-default" onclick="history.back()">戻る</button>
+                <button type="submit" class="btn btn-primary">サインアップ</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}

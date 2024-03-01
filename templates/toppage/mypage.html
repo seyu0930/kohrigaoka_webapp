@@ -1,0 +1,23 @@
+{% extends "index.html" %}
+
+{% block pagename %} マイページ{% endblock %}
+{% block main %}
+<!-- Blog entries-->
+    <!-- Nested row for non-featured blog posts-->
+    <div class="row">
+
+     {% if ourposts_list %}
+        {% for ourposts in ourposts_list %}
+        {% if request.user == ourposts.user %}
+        {% include "ourposts_include.html" %}
+        {% endif %}
+        {% endfor %}
+    {% else %}
+        <p>まだ投稿がありません</p>
+    {% endif %}
+    </div>
+{% endblock %}
+
+{% block pagenation %}
+    {% include "pagenation_include.html" %}
+{% endblock %}

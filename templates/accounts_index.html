@@ -1,0 +1,101 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>WE LOVE KOHRI - 香里ヶ丘の魅力を伝えよう</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
+    </head>
+    <body>
+        <!-- Responsive navbar-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="{% url 'toppage:top' %}">WE LOVE KOHRI</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item"><a class="nav-link" aria-current="page" href="{% url 'toppage:top' %}">Home</a></li>
+                        {% if request.user.is_authenticated %}
+                        <li class="nav-item"><a class="nav-link" aria-current="page" href="{% url 'toppage:mypage' %}">Mypage</a></li>
+                        <li class="nav-item"><a class="nav-link" aria-current="page" href="{% url 'toppage:createpost' %}">MakePost</a></li>
+                        <li class="nav-item"><a class="nav-link" aria-current="page" data-toggle="modal" data-target="#testModal" href="{% url 'accounts:logout' %}">Logout</a></li>
+                        {% else %}
+                        <li class="nav-item"><a class="nav-link" aria-current="page" href="{% url 'accounts:login' %}">Login</a></li>
+                        <li class="nav-item"><a class="nav-link" aria-current="page" href="{% url 'accounts:signup' %}">Signup</a></li>
+                        <li class="nav-item"><a class="nav-link" aria-current="page" href="#">Contact</a></li>
+                        {% endif %}
+                </div>
+            </div>
+        </nav>
+        <!-- Page header with logo and tagline-->
+        <header class="py-5 bg-light border-bottom mb-4">
+            <div class="container">
+                <div class="text-center my-5">
+                    <h1 class="fw-bolder">{% block pagename %}Welcome to Our HomeTown!{% endblock %}</h1>
+                    <p class="lead mb-0">{% if request.user.is_authenticated %}ようこそ{{ request.user }}さん。香里ヶ丘の魅力を伝えましょう{% else %}初めまして！香里ヶ丘の魅力を覗きましょう{% endif %}</p>
+                </div>
+            </div>
+        </header>
+        <main>
+        <!-- Page content-->
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                    {% block main %}
+                    
+                    {% endblock %}
+                    
+                    </div>
+                    {% block sidewidgets %}
+                    <!-- Side widgets-->
+                    <div class="col-lg-12">
+                        <!-- Categories widget-->
+                        <div class="card mb-4 mt-5">
+                            <div class="card-header">Categories</div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <ul class="list-unstyled mb-0">
+                                            <li><a href="/category/notice/">お知らせ</a></li>
+                                            <li><a href="/category/foods/">グルメ</a></li>
+                                            <li><a href="/category/bestspot/">ベストスポット</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <ul class="list-unstyled mb-0">
+                                            <li><a href="/category/events/">イベント</a></li>
+                                            <li><a href="/category/news/">個人的ニュース</a></li>
+                                            <li><a href="/category/others/">その他</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Side widget-->
+                        <div class="card mb-4">
+                            <div class="card-header">編集者コメント</div>
+                            <div class="card-body">haruです</div>
+                        </div>
+                    </div>
+                    {% endblock %}
+                </div>
+            </div>
+        </main>
+        <!-- Footer-->
+        <footer class="py-5 bg-dark">
+            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2024</p></div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        
+        <!-- Core theme JS-->
+        <script src="{% static 'js/scripts.js' %}"></script>
+    </body>
+</html>

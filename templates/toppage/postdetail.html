@@ -1,0 +1,32 @@
+{% extends "index.html" %}
+
+{% block pagename %} {{ ourposts.user}}さんの投稿{% endblock %}
+{% block main %}
+<!-- Blog entries-->
+<div class="col-lg-12">
+    <!-- Nested row for non-featured blog posts-->
+    <!-- Blog post-->
+    <div class="card mb-4">
+        {% if ourposts.photo1 %}
+        <a href="#!"><img class="card-img-top" src="{{ ourposts.photo1.url }}" alt="" /></a>
+        {% else %}
+        <a href="#!"><img class="card-img-top" src="https://dummyimage.com/850x350/dee2e6/6c757d.jpg" alt="" /></a>
+        {% endif %}
+        <div class="card-body">
+            <div class="small text-muted">{{ ourposts.date }} - {{ ourposts.user }}</div>
+            <h2 class="card-title h4">{{ ourposts.title }}</h2>
+            <p class="card-text">{{ ourposts.content }}</p>
+        {% if request.user == ourposts.user %}
+            <a class="btn btn-primary" href="/deletepost/{{ ourposts.id }}">削除する</a>
+            {% endif %}
+    </div>
+</div>
+<div class="text-center">
+    <a class="btn btn-primary mb-3" href="{% url 'toppage:mypage' %}">戻る</a>
+</div>
+</div>
+{% endblock %}
+
+
+
+

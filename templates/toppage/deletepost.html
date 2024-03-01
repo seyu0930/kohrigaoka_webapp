@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+<body>
+
+   <form method="POST">
+        {% csrf_token %}
+        <p>本当に削除しますか？</p>
+        <button type="submit" value="Comfirm">削除する</button>
+        <button type="button" onclick="history.back()">戻る</button>
+    </form>
+</body>
+</html>

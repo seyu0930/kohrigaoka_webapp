@@ -1,0 +1,19 @@
+{% extends "accounts_index.html" %}
+
+{% block pagename %}ログイン{% endblock %}
+{% block main %}
+<!-- Blog entries-->
+    <!-- Nested row for non-featured blog posts-->
+    <div class="row">
+        <form method="POST">
+            <div class="text-center me-5">
+            {% csrf_token %}
+            {{form.as_p}}
+            </div>
+            <div class="text-center ms-5">
+                <button type="button" class="btn btn-default" onclick="history.back()">戻る</button>
+                <button type="submit" class="btn btn-primary">ログイン</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}
