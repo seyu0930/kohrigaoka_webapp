@@ -133,7 +133,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = 'mywebsite/static/'
+MEDIA_URL = 'mywebsite/media/'
 
 STATICFILES_DIRS = (
     [os.path.join(BASE_DIR, 'static'),])
@@ -144,8 +145,7 @@ PROJECT_NAME = os.path.basename(BASE_DIR)
 
 #STATIC_ROOT = os.path.join(PARENT_DIR, "static")
 MEDIA_ROOT = os.path.join(PARENT_DIR, 'media')
-# 画像をdjango側で読み込むための設定
-MEDIA_URL = '/media/'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
