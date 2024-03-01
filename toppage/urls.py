@@ -4,7 +4,7 @@ from . import views
 
 app_name = 'toppage'
 urlpatterns = [
-    path('top/', views.top, name="top"),
+    path('', views.top, name="top"),
     path('mypage/',views.mypage, name="mypage"),
     path('createpost/',views.createpost, name="createpost"),
     path('postdetail/<int:pk>/',views.postdetail,name='postdetail'),
