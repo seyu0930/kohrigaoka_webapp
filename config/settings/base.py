@@ -30,7 +30,7 @@ load_dotenv(env_path)
 SECRET_KEY = os.environ.get("secret_key")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [os.environ.get("allowed_hosts")]
 
@@ -154,6 +154,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 SITE_ID = 1
 LOGIN_URL = '/accounts/login/'
-LOGIN_REDIRECT_URL = "mypage"
+LOGIN_REDIRECT_URL = "/mypage"
 #LOGOUT_REDIRECT_URL = "accounts/logout/"
 
