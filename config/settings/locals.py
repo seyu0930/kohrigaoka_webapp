@@ -133,7 +133,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
-    [os.path.join(BASE_DIR, 'static_local'),])
+    [os.path.join(BASE_DIR, 'static'),])
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -150,6 +150,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 SITE_ID = 1
 LOGIN_URL = '/accounts/login/'
-LOGIN_REDIRECT_URL = "/top/"
+LOGIN_REDIRECT_URL = ""
 #LOGOUT_REDIRECT_URL = "accounts/logout/"
 

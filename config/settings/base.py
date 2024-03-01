@@ -136,14 +136,14 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 STATICFILES_DIRS = (
-    [os.path.join(BASE_DIR, 'static_local'),])
+    [os.path.join(BASE_DIR, 'static'),])
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 PROJECT_NAME = os.path.basename(BASE_DIR)
 
-STATIC_ROOT = os.path.join(PARENT_DIR, "site/public/static")
-MEDIA_ROOT = os.path.join(PARENT_DIR, 'site/public/media')
+#STATIC_ROOT = os.path.join(PARENT_DIR, "static")
+MEDIA_ROOT = os.path.join(PARENT_DIR, 'media')
 # 画像をdjango側で読み込むための設定
 MEDIA_URL = '/media/'
 
@@ -154,6 +154,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 SITE_ID = 1
 LOGIN_URL = '/accounts/login/'
-LOGIN_REDIRECT_URL = "/top/"
+LOGIN_REDIRECT_URL = ""
 #LOGOUT_REDIRECT_URL = "accounts/logout/"
 
