@@ -142,7 +142,7 @@ MEDIA_ROOT = os.path.join(PARENT_DIR, 'media')
 #MEDIA_ROOT = '/var/www/{}/media'.format(PROJECT_NAME)
 
 
-STATIC_ROOT = os.path.join(PARENT_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(PARENT_DIR, 'static')
 #STATIC_ROOT = '/var/www/{}/static'.format(PROJECT_NAME)
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
