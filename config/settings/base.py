@@ -18,6 +18,7 @@ import os
 #PARENT_DIR = Path(__file__).resolve().parent.parent.parent
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 PARENT_DIR = Path(__file__).resolve().parent.parent.parent
+PROJECT_NAME = os.path.basename(BASE_DIR)
 
 env_path = PARENT_DIR / "auth/.env"
 load_dotenv(env_path)
@@ -30,7 +31,7 @@ load_dotenv(env_path)
 SECRET_KEY = os.environ.get("secret_key")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [os.environ.get("allowed_hosts")]
 
@@ -133,18 +134,15 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = 'mywebsite/static/'
-MEDIA_URL = 'mywebsite/media/'
+STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
 
-STATICFILES_DIRS = (
-    [os.path.join(BASE_DIR, 'static'),])
+#MEDIA_ROOT = os.path.join(PARENT_DIR, 'media')
+MEDIA_ROOT = '/var/www/{}/media'.format(PROJECT_NAME)
+#STATIC_ROOT = os.path.join(PARENT_DIR, 'static')
+STATIC_ROOT = '/var/www/{}/static'.format(PROJECT_NAME)
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-PROJECT_NAME = os.path.basename(BASE_DIR)
-
-#STATIC_ROOT = os.path.join(PARENT_DIR, "static")
-MEDIA_ROOT = os.path.join(PARENT_DIR, 'media')
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 
 
 # Default primary key field type
