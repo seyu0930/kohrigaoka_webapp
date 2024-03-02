@@ -141,12 +141,12 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(PARENT_DIR, 'media')
 #MEDIA_ROOT = '/var/www/{}/media'.format(PROJECT_NAME)
 
-if not DEBUG:
-    STATIC_ROOT = os.path.join(PARENT_DIR, 'staticfiles')
-    #STATIC_ROOT = '/var/www/{}/static'.format(PROJECT_NAME)
-    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-else:
-     STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
+
+STATIC_ROOT = os.path.join(PARENT_DIR, 'staticfiles')
+#STATIC_ROOT = '/var/www/{}/static'.format(PROJECT_NAME)
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+#STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 
 
 
