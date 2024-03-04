@@ -17,12 +17,6 @@
                             <p>
                             {{ fields }}
                             </p>
-
-                            <div class = 'help_text'>
-                            {% if fields.help_text %}
-                                <small'>{{ fields.help_text }}</small>
-                            {% endif %}
-                            </div>
                     </div>
                     {% for error in fields.errors %}
                         <p>{{ error }}</p>
@@ -36,5 +30,6 @@
                 <button type="submit" class="btn btn-primary">サインアップ</button>
             </div>
         </form>
+        <p class="text-center mt-5">ログインは<a href="{% url 'accounts:login' %}">こちら</a></p>
     </div>
 {% endblock %}
