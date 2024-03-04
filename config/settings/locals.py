@@ -97,7 +97,7 @@ SITE_ID = 1
 
 LOGIN_URL = '/accounts/login/'
 
-LOGIN_REDIRECT_URL = ""
+LOGIN_REDIRECT_URL = "/mypage/"
 
 #LOGOUT_REDIRECT_URL = "accounts/logout/"
 
@@ -149,4 +149,4 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = ([os.path.join(BASE_DIR, 'static'),])
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(PARENT_DIR, 'media')

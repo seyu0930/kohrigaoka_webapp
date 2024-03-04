@@ -104,7 +104,7 @@ SITE_ID = 1
 
 LOGIN_URL = '/accounts/login/'
 
-LOGIN_REDIRECT_URL = "/mypage"
+LOGIN_REDIRECT_URL = "/mypage/"
 
 #LOGOUT_REDIRECT_URL = "accounts/logout/"
 
