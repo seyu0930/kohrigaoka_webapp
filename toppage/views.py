@@ -52,7 +52,7 @@ class CreatePostView(LoginRequiredMixin, CreateView):
                     form.user = request.user
                     form.photo1 = request.FILES["photo1"]
                     image = Image.open(form.photo1)
-                    if image.width * image.height > 2000*2000:
+                    if image.width * image.height > 4000*4000:
                         messages.error(request, "投稿に失敗しました。画像のサイズが大きすぎます")
                         return redirect('toppage:createpost')
                     form.save()
