@@ -10,6 +10,8 @@ from .models import OurPosts
 from .forms import OurPostForm
 from django.shortcuts import redirect
 from django.contrib import messages
+from PIL import Image
+from django.core.exceptions import ValidationError
 # Create your views here.
 #-------------------------------------------------
 class ToppageView(ListView):
@@ -49,6 +51,10 @@ class CreatePostView(LoginRequiredMixin, CreateView):
                     form.valid_for_public = "非公開"
                     form.user = request.user
                     form.photo1 = request.FILES["photo1"]
+                    image = Image.open(form.photo1)
+                    if image.width * image.height > 2000*2000:
+                        messages.error(request, "投稿に失敗しました。画像のサイズが大きすぎます")
+                        return redirect('toppage:createpost')
                     form.save()
                     return redirect('toppage:mypage')
                 messages.error(request, "投稿に失敗しました。画像の投稿を忘れていませんか？")

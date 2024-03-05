@@ -2,13 +2,17 @@
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
+from pathlib import Path
+from dotenv import load_dotenv
 
+PARENT_DIR = Path(__file__).resolve().parent
+
+env_path = PARENT_DIR / "auth/.env"
+load_dotenv(env_path)
 
 def main():
     """Run administrative tasks."""
-    '''本番はbaseをアクティブにしlocalsをコメントアウト'''
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings.base')
-    #os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings.locals')
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', os.environ.get("settings"))
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:

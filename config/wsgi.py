@@ -8,11 +8,16 @@ https://docs.djangoproject.com/en/4.1/howto/deployment/wsgi/
 """
 
 import os
-
 from django.core.wsgi import get_wsgi_application
+from pathlib import Path
+from dotenv import load_dotenv
 
-'''本番はbaseをアクティブにしlocalsをコメントアウト'''
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings.base')
-#os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings.locals')
+PARENT_DIR = Path(__file__).resolve().parent.parent
+
+env_path = PARENT_DIR / "auth/.env"
+load_dotenv(env_path)
+
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', os.environ.get("settings"))
+
 
 application = get_wsgi_application()
