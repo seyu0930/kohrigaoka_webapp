@@ -137,7 +137,7 @@ TEMPLATES = [
 #############################
 
 port_num = 10022  # エックスサーバーではデフォルトでポート番号が10022に設定されている
-key_path = '/Users/haru/.ssh/id_xserver_rsa'
+key_path = os.environ.get("keypath")
 
 ssh_tunnel = SSHTunnelForwarder(
 	 (os.environ.get("server_id"), port_num),
