@@ -132,9 +132,9 @@ DATABASES = {
             'ENGINE': 'django.db.backends.mysql',
             'NAME': "kohrigaokaweb",
             'USER': "root",
-            'PASSWORD': "",
-            'HOST': "",
-            'PORT': '',
+            'PASSWORD': "Yusei0930",
+            'HOST': "localhost",
+            'PORT': '3306',
     }
 }
 
