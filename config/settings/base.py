@@ -136,12 +136,12 @@ TEMPLATES = [
 
 DATABASES = {
     'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'ENGINE': 'django.db.backends.mysql',
             'NAME': os.environ.get("name_db"),
             'USER': os.environ.get("user_db"),
             'PASSWORD': os.environ.get("pswd_db"),
             'HOST': os.environ.get("host_db"),
-            'PORT': '5432',
+            'PORT': '3306',
     }
 }
 
