@@ -3,12 +3,14 @@
 import os
 import sys
 from pathlib import Path
+import pymysql
 from dotenv import load_dotenv
 
 PARENT_DIR = Path(__file__).resolve().parent
 
 env_path = PARENT_DIR / "auth/.env"
 load_dotenv(env_path)
+pymysql.install_as_MySQLdb()
 
 def main():
     """Run administrative tasks."""

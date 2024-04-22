@@ -5,6 +5,8 @@
 from pathlib import Path
 from dotenv import load_dotenv
 import os
+import MySQLdb as mydb
+from sshtunnel import SSHTunnelForwarder
 
 ##############################
 #----------dir_path----------
@@ -132,12 +134,11 @@ DATABASES = {
             'ENGINE': 'django.db.backends.mysql',
             'NAME': "kohrigaokaweb",
             'USER': "root",
-            'PASSWORD': "Yusei0930",
-            'HOST': "localhost",
-            'PORT': '3306',
+            'PASSWORD': os.environ.get("password"),
+            'HOST': "",
+            'PORT': "3306",
     }
 }
-
 
 #################################
 #----------static/media----------

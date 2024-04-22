@@ -5,6 +5,8 @@
 from pathlib import Path
 from dotenv import load_dotenv
 import os
+import MySQLdb as mydb
+from sshtunnel import SSHTunnelForwarder
 
 
 ##############################
@@ -134,14 +136,30 @@ TEMPLATES = [
 #----------database----------
 #############################
 
+port_num = 10022  # エックスサーバーではデフォルトでポート番号が10022に設定されている
+key_path = '/Users/haru/.ssh/id_xserver_rsa'
+
+ssh_tunnel = SSHTunnelForwarder(
+	 (os.environ.get("server_id"), port_num),
+	 ssh_username= os.environ.get("ssh_username"),
+	 ssh_password= os.environ.get("ssh_password"),
+     ssh_pkey=key_path,
+	 remote_bind_address=('127.0.0.1', 3306),
+)
+ 
+ssh_tunnel.start()
+
 DATABASES = {
     'default': {
             'ENGINE': 'django.db.backends.mysql',
-            'NAME': os.environ.get("name_db"),
-            'USER': os.environ.get("user_db"),
-            'PASSWORD': os.environ.get("pswd_db"),
-            'HOST': os.environ.get("host_db"),
-            'PORT': '3306',
+            'NAME': os.environ.get("name"),
+            'USER': os.environ.get("user"),
+            'PASSWORD': os.environ.get("password"),
+            'HOST': "127.0.0.1",
+            'PORT': ssh_tunnel.local_bind_port,
+            'OPTIONS':{
+                'init_command':"SET sql_mode='STRICT_TRANS_TABLES'",
+        },
     }
 }
 
