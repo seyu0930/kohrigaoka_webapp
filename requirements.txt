@@ -13,3 +13,4 @@ decouple==0.0.7
 whitenoise==6.6.0
 mysqlclient==2.0.3
 pymysql==1.0.2
+sshtunnel==6.6.0
