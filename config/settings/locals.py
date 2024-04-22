@@ -129,12 +129,12 @@ TEMPLATES = [
 
 DATABASES = {
     'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': "postgres",
-            'USER': "haru",
-            'PASSWORD': "Yusei0930",
-            'HOST': "localhost",
-            'PORT': '5432',
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': "kohrigaokaweb",
+            'USER': "root",
+            'PASSWORD': "",
+            'HOST': "",
+            'PORT': '',
     }
 }
 
